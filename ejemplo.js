@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Product from "./product copy";
+import Product from "./Product";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -19,7 +19,7 @@ export default function ProductList() {
   return (
     <div>
       {products.map((product) => (
-        <Productwda
+        <Product
           key={product.id}
           title={product.title}
           price={product.price}
