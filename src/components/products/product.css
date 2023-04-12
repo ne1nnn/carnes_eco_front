@@ -1,6 +1,5 @@
-/* Estilos para los productos */
 .product {
-  width: 300px;
+  float: left;
   margin: 1rem;
   border: 1px solid #ddd;
   border-radius: 4px;
