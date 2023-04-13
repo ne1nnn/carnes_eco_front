@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
-  const addProduc = () => {
+  const addProduct = () => {
     navigate("/formproduct");
   };
   const goHome = () => {
@@ -12,13 +12,13 @@ function Navbar() {
   };
 
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         <li>
-          <a onClick={addProduc}>PRODUCTOS</a>
+          <a onClick={goHome}>Home</a>
         </li>
         <li>
-          <a onClick={goHome}>Home</a>
+          <a onClick={addProduct}>Agregar producto</a>
         </li>
       </ul>
     </nav>

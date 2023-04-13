@@ -3,7 +3,7 @@ import axios from "axios";
 import "./form.style.css";
 
 function ProductsForm() {
-  const [name, setName] = useState("");
+  const [title, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [recipe, setRecipe] = useState("");
@@ -13,7 +13,7 @@ function ProductsForm() {
 
     try {
       const response = await axios.post("http://localhost:4000/products/add", {
-        name,
+        title,
         price,
         description,
         recipe,
@@ -32,7 +32,7 @@ function ProductsForm() {
         <input
           id="name"
           type="text"
-          value={name}
+          value={title}
           onChange={(event) => setName(event.target.value)}
         />
       </div>
