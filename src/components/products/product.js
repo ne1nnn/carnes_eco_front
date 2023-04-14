@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CardProduct from "./card.product";
-import "./products.style.css";
 import Grid from "@mui/material/Grid";
 
 export default function ProductList() {

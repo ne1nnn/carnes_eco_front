@@ -7,17 +7,28 @@ function ProductsForm() {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [recipe, setRecipe] = useState("");
+  const [image, setImage] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:4000/products/add", {
-        title,
-        price,
-        description,
-        recipe,
-      });
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("price", price);
+      formData.append("description", description);
+      formData.append("recipe", recipe);
+      formData.append("image", image);
+
+      const response = await axios.post(
+        "http://localhost:4000/products/add",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       console.log("La respuesta del servidor es:", response.data);
     } catch (error) {
@@ -61,7 +72,17 @@ function ProductsForm() {
           onChange={(event) => setRecipe(event.target.value)}
         />
       </div>
-      <button type="submit">Enviar</button>
+      <div>
+        <label htmlFor="image">Imagen:</label>
+        <input
+          id="image"
+          type="file"
+          onChange={(event) => setImage(event.target.files[0])}
+        />
+      </div>
+      <div className="centered-button-container">
+        <button className="product-button">Click aquí</button>
+      </div>
     </form>
   );
 }
