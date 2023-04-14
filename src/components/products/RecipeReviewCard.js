@@ -67,9 +67,19 @@ export default function RecipeReviewCard(props) {
           <Typography paragraph>{recipe}</Typography>
         </CardContent>
       </Collapse>
-      <Button className="button-card" variant="contained" color="success">
-        Agregar al carro{" "}
-      </Button>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button className="button-card" variant="contained" color="success">
+          Agregar al carro
+        </Button>
+      </div>
+      <br></br>
     </Card>
   );
 }

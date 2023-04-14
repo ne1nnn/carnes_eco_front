@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./form.style.css";
+import Button from "@mui/material/Button";
 
 function ProductsForm() {
   const [title, setName] = useState("");
@@ -20,15 +21,11 @@ function ProductsForm() {
       formData.append("recipe", recipe);
       formData.append("image", image);
 
-      const response = await axios.post(
-        "http://localhost:4000/products/add",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost:4000/add", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log("La respuesta del servidor es:", response.data);
     } catch (error) {
@@ -80,9 +77,9 @@ function ProductsForm() {
           onChange={(event) => setImage(event.target.files[0])}
         />
       </div>
-      <div className="centered-button-container">
-        <button className="product-button">Click aquí</button>
-      </div>
+      <Button className="button-card" variant="contained" color="success">
+        Cargar producto
+      </Button>
     </form>
   );
 }
