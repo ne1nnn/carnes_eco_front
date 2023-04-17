@@ -8,7 +8,7 @@ export default function ProductList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/products/all")
+      .get("http://localhost:4000/all")
       .then((response) => {
         setProducts(response.data);
       })

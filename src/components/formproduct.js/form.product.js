@@ -34,7 +34,11 @@ function ProductsForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form
+      onSubmit={handleSubmit}
+      className="form"
+      encType="multipart/form-data"
+    >
       <div>
         <label htmlFor="name">Nombre:</label>
         <input
@@ -77,7 +81,12 @@ function ProductsForm() {
           onChange={(event) => setImage(event.target.files[0])}
         />
       </div>
-      <Button className="button-card" variant="contained" color="success">
+      <Button
+        className="button-card"
+        variant="contained"
+        color="success"
+        type="submit"
+      >
         Cargar producto
       </Button>
     </form>
