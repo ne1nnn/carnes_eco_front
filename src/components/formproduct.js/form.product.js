@@ -78,6 +78,7 @@ function ProductsForm() {
         <input
           id="image"
           type="file"
+          multiple
           onChange={(event) => setImage(event.target.files[0])}
         />
       </div>

@@ -27,7 +27,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard(props) {
-  const { title, image, description, recipe } = props;
+  const { title, price, image, description, recipe } = props;
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -44,8 +44,18 @@ export default function RecipeReviewCard(props) {
         }
         title={title}
       />
+      <CardContent>
+        <Typography variant="body2" color="text.secondary">
+          {price}
+        </Typography>
+      </CardContent>
+      <CardMedia
+        component="img"
+        height="194"
+        image={`/image/${image}`}
+        alt={title}
+      />
 
-      <CardMedia component="img" height="194" image={image} alt={title} />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {description}
