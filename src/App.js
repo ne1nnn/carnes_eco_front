@@ -8,6 +8,7 @@ export default function App() {
       {/* shared header */}
       <div className="body-container-sm">
         <Navbar />
+
         <Routes>
           {/* auth */}
           {/* <Route path="/" element={<LoginForm />} /> */}

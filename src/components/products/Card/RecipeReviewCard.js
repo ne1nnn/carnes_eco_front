@@ -6,10 +6,8 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Collapse from "@mui/material/Collapse";
-import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import Button from "@mui/material/Button";
 import "./styles.css";
 
@@ -35,24 +33,32 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{
+        maxWidth: 450,
+        backgroundColor: "#ffffff",
+        boxShadow: "0px 8px 9px rgba(0, 0, 0, 0.16)",
+        borderRadius: "30px",
+      }}
+    >
+      {/* AQUI LE DOY ESTILO AL TITULO DEL PRODUCT */}
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
-        }
         title={title}
+        titleTypographyProps={{
+          variant: "h3",
+          color: "black",
+          style: { textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)" },
+        }}
       />
       <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          {price}
+        <Typography variant="h4" color="text.secondary" sx={{ padding: "5px" }}>
+          {"$ " + price}
         </Typography>
       </CardContent>
       <CardMedia
         component="img"
         height="194"
-        image={`/image/${image}`}
+        image={`http://localhost:4000/images/${image}`}
         alt={title}
       />
 
@@ -73,7 +79,6 @@ export default function RecipeReviewCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Recipe:</Typography>
           <Typography paragraph>{recipe}</Typography>
         </CardContent>
       </Collapse>
@@ -85,7 +90,10 @@ export default function RecipeReviewCard(props) {
           alignItems: "center",
         }}
       >
-        <Button className="button-card" variant="contained" color="success">
+        <Button
+          sx={{ backgroundColor: "black", color: "white" }}
+          className="button-card"
+        >
           Agregar al carro
         </Button>
       </div>

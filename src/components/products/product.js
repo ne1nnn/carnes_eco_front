@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CardProduct from "./card.product";
+import RecipeReviewCard from "./Card/RecipeReviewCard";
 import Grid from "@mui/material/Grid";
+import "./styles.css";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -18,11 +19,18 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div className="card-product">
-      <Grid container spacing={3}>
+    <div className="product-list-container">
+      <Grid container spacing={0.5}>
         {products.map((product) => (
-          <Grid item xs={12} sm={6} md={4} key={product.id}>
-            <CardProduct
+          <Grid
+            item
+            xs={6}
+            sm={6}
+            md={3}
+            key={product.id}
+            style={{ marginTop: "1.5%" }}
+          >
+            <RecipeReviewCard
               title={product.title}
               price={product.price}
               image={product.image}
