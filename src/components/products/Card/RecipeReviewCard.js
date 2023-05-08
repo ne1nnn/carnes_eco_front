@@ -9,7 +9,7 @@ import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import "./styles.css";
+import "./card.styles.css";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 

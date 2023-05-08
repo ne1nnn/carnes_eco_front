@@ -4,8 +4,8 @@
   background-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   padding: 30px 20px;
-  border-radius: 25px;
-  opacity: 0.9;
+  border-radius: 5px;
+  opacity: 0.95;
   width: 70%;
   margin: 0 auto;
   margin-top: 0;
@@ -22,8 +22,8 @@
 }
 
 .navbar li {
-  margin-right: 5rem;
-  font-size: 1.5rem;
+  margin-right: 1rem;
+  font-size: 1.3rem;
   font-weight: bold;
 }
 
@@ -36,4 +36,10 @@
   background-color: #394549;
   border-radius: 10px;
   padding: 20px 30px;
+}
+.navbar a {
+  padding: 20px 30px;
+}
+.box {
+  background-color: white;
 }

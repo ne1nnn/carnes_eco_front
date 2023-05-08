@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import RecipeReviewCard from "./Card/RecipeReviewCard";
 import Grid from "@mui/material/Grid";
-import "./styles.css";
+import "./product.styles.css";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
