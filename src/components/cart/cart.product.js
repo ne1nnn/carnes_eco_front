@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./cart.styles.css";
+import { CartContext } from "../../globalContext/cart.context";
 
 function Cart() {
-  const [productos, setProductos] = useState([]);
-
-  const agregarProducto = (producto) => {
-    setProductos([...productos, producto]);
-  };
+  const { cartItems } = useContext(CartContext);
 
   return (
-    <div className="barra-vertical">
+    <div className="barra-vertical animated slideInRight">
       <div>
         <h1>Carrito de productos</h1>
         <ul>
-          {productos.map((producto, index) => (
-            <li key={index}>{producto.nombre}</li>
+          {cartItems.map((producto, index) => (
+            <li key={index}>{producto.title}</li>
           ))}
         </ul>
         <hr />

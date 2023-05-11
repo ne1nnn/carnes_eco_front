@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/navbar";
 import CartProducts from "./components/cart/cart.product";
 import ProductsForm from "./components/formproduct.js/form.product";
 import { useState } from "react";
+import { CartProvider } from "./globalContext/cart.context";
 
 export default function App() {
   const [mostrarCart, setMostrarCart] = useState(false);
@@ -13,22 +14,24 @@ export default function App() {
   }
 
   return (
-    <Router>
-      {/* shared header */}
-      <div className="body-container-sm">
-        <Navbar toggleCart={toggleCart} />
-        {mostrarCart && <CartProducts />}
+    <CartProvider>
+      <Router>
+        {/* shared header */}
+        <div className="body-container-sm">
+          <Navbar toggleCart={toggleCart} />
+          {mostrarCart && <CartProducts />}
 
-        <Routes>
-          {/* auth */}
-          {/* <Route path="/" element={<LoginForm />} /> */}
-          <Route path="/home" element={<Products />} />
-          <Route path="/formproduct" element={<ProductsForm />} />
-          {/* home */}
-          <Route path="/" element={<Products />} />
-          {/* catch-all route */}
-        </Routes>
-      </div>
-    </Router>
+          <Routes>
+            {/* auth */}
+            {/* <Route path="/" element={<LoginForm />} /> */}
+            <Route path="/home" element={<Products />} />
+            <Route path="/formproduct" element={<ProductsForm />} />
+            {/* home */}
+            <Route path="/" element={<Products />} />
+            {/* catch-all route */}
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
   );
 }

@@ -10,6 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import "./card.styles.css";
+import { CartContext } from "../../../globalContext/cart.context";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
@@ -27,11 +28,7 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard(props) {
   const { title, price, image, description, recipe } = props;
   const [expanded, setExpanded] = React.useState(false);
-  const [productList, setProductList] = React.useState([]);
-
-  function addProductToCart(product) {
-    setProductList([...productList, product]);
-  }
+  const { addToCart } = React.useContext(CartContext);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -98,7 +95,7 @@ export default function RecipeReviewCard(props) {
         <Button
           sx={{ backgroundColor: "black", color: "white" }}
           className="button-card"
-          onClick={() => addProductToCart()}
+          onClick={() => addToCart(props)}
         >
           Agregar al carro
         </Button>
