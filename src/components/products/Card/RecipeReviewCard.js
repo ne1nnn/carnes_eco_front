@@ -27,6 +27,11 @@ const ExpandMore = styled((props) => {
 export default function RecipeReviewCard(props) {
   const { title, price, image, description, recipe } = props;
   const [expanded, setExpanded] = React.useState(false);
+  const [productList, setProductList] = React.useState([]);
+
+  function addProductToCart(product) {
+    setProductList([...productList, product]);
+  }
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -93,6 +98,7 @@ export default function RecipeReviewCard(props) {
         <Button
           sx={{ backgroundColor: "black", color: "white" }}
           className="button-card"
+          onClick={() => addProductToCart()}
         >
           Agregar al carro
         </Button>

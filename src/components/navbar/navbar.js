@@ -3,16 +3,21 @@ import "./navbar.styles.css";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ toggleCart }) {
   const navigate = useNavigate();
+
   const addProduct = () => {
     navigate("/formproduct");
   };
+
   const goHome = () => {
     navigate("/home");
+  };
+
+  const cartProducts = () => {
+    toggleCart();
   };
 
   return (
@@ -37,7 +42,7 @@ function Navbar() {
         </li>
         <li>
           <a>
-            <ShoppingCartIcon />
+            <ShoppingCartIcon onClick={cartProducts} />
           </a>
         </li>
       </ul>
