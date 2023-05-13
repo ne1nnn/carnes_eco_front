@@ -13,19 +13,31 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    console.log(product);
-    setCartItems([...cartItems, product]);
+    const existingProduct = cartItems.find(item => item.id === product.id);
+    console.log("From AddtoCart" + existingProduct);
+    
+    if (!existingProduct) {
+      setCartItems([...cartItems, {...product, stock: 1}]);
+    } else {
+      const updatedCartItems = cartItems.map(item => {
+        if (item.id === product.id) {
+          return {...item, stock: item.stock + 1};
+        }
+        return item;
+      });
+      setCartItems(updatedCartItems);
+    }
   };
-
+  
   const removeFromCart = (id) => {
     console.log("From removeProductCart", id);
     setCartItems(cartItems.filter((producto) => producto.id !== id));
   };
 
-  const updateCartItem = (productId, quantity) => {
+  const updateCartItem = (productId, stock) => {
     setCartItems(
       cartItems.map((item) =>
-        item.id === productId ? { ...item, quantity } : item
+        item.id === productId ? { ...item, stock } : item
       )
     );
   };
