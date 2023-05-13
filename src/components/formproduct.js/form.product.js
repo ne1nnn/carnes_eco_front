@@ -7,7 +7,7 @@ function ProductsForm() {
   const [title, setName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
-  const [recipe, setRecipe] = useState("");
+  const [stock, setStock] = useState("");
   const [image, setImage] = useState(null);
 
   const handleSubmit = async (event) => {
@@ -18,7 +18,7 @@ function ProductsForm() {
       formData.append("title", title);
       formData.append("price", price);
       formData.append("description", description);
-      formData.append("recipe", recipe);
+      formData.append("stock", stock);
       formData.append("image", image);
 
       const response = await axios.post("http://localhost:4000/add", formData, {
@@ -58,6 +58,15 @@ function ProductsForm() {
         />
       </div>
       <div>
+        <label htmlFor="stock">Cantidad</label>
+        <input
+          id="stock"
+          type="number"
+          value={stock}
+          onChange={(event) => setStock(event.target.value)}
+        />
+      </div>
+      <div>
         <label htmlFor="description">Descripción:</label>
         <textarea
           id="description"
@@ -65,14 +74,7 @@ function ProductsForm() {
           onChange={(event) => setDescription(event.target.value)}
         />
       </div>
-      <div>
-        <label htmlFor="recipe">Receta:</label>
-        <textarea
-          id="recipe"
-          value={recipe}
-          onChange={(event) => setRecipe(event.target.value)}
-        />
-      </div>
+
       <div>
         <label htmlFor="image">Imagen:</label>
         <input

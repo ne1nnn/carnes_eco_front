@@ -26,7 +26,7 @@ const ExpandMore = styled((props) => {
 }));
 
 export default function RecipeReviewCard(props) {
-  const { title, price, image, description, recipe } = props;
+  const { title, price, image, description, stock } = props;
   const [expanded, setExpanded] = React.useState(false);
   const { addToCart } = React.useContext(CartContext);
 
@@ -52,6 +52,7 @@ export default function RecipeReviewCard(props) {
           style: { textShadow: "1px 1px 2px rgba(0, 0, 0, 0.3)" },
         }}
       />
+
       <CardContent>
         <Typography variant="h4" color="text.secondary" sx={{ padding: "5px" }}>
           {"$ " + price}
@@ -81,7 +82,7 @@ export default function RecipeReviewCard(props) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>{recipe}</Typography>
+          <Typography paragraph>{stock}</Typography>
         </CardContent>
       </Collapse>
 

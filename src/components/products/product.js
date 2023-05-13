@@ -31,11 +31,12 @@ export default function ProductList() {
             style={{ marginTop: "1.5%" }}
           >
             <RecipeReviewCard
+              id={product._id}
               title={product.title}
               price={product.price}
               image={product.image}
               description={product.description}
-              recipe={product.recipe}
+              stock={product.stock}
             />
           </Grid>
         ))}
