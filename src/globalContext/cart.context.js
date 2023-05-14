@@ -13,25 +13,51 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   const addToCart = (product) => {
-    const existingProduct = cartItems.find(item => item.id === product.id);
-    console.log("From AddtoCart" + existingProduct);
-    
+    const existingProduct = cartItems.find((item) => item.id === product.id);
+   
+
     if (!existingProduct) {
-      setCartItems([...cartItems, {...product, stock: 1}]);
+      setCartItems([...cartItems, { ...product, stock: 1 }]);
     } else {
-      const updatedCartItems = cartItems.map(item => {
+      const updatedCartItems = cartItems.map((item) => {
         if (item.id === product.id) {
-          return {...item, stock: item.stock + 1};
+          return { ...item, stock: item.stock + 1 };
         }
+
         return item;
       });
+
+      console.log("From AddtoCart");
+
       setCartItems(updatedCartItems);
     }
+    const updatedProduct = cartItems.find(
+      (item) => item.id === product.id
+    );
+
+    if (updatedProduct.stock > updatedProduct.stock) {
+      console.log("No hay más stock disponible para este producto");
+    }
+    
   };
-  
+
   const removeFromCart = (id) => {
-    console.log("From removeProductCart", id);
-    setCartItems(cartItems.filter((producto) => producto.id !== id));
+    setCartItems(
+      cartItems.map((producto) =>
+        producto.id === id && producto.stock > 0
+          ? { ...producto, stock: producto.stock - 1 }
+          : producto
+      )
+    );
+    const productoEliminado = cartItems.find((producto) => producto.id === id);
+    console.log(
+      "From removeProductCart  || ",
+      ` El nuevo stock de ${productoEliminado.title} es: ${productoEliminado.stock}`
+    );
+
+    if (productoEliminado.stock === 1) {
+      setCartItems(cartItems.filter((producto) => producto.id !== id));
+    }
   };
 
   const updateCartItem = (productId, stock) => {
