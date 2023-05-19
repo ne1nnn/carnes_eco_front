@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import axios from "axios";
 
 export const CartContext = createContext({
   cartItems: [],
@@ -14,10 +15,9 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (product) => {
     const existingProduct = cartItems.find((item) => item.id === product.id);
-   
 
     if (!existingProduct) {
-      setCartItems([...cartItems, { ...product, stock: 1 }]);
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
     } else {
       const updatedCartItems = cartItems.map((item) => {
         if (item.id === product.id) {
@@ -27,18 +27,10 @@ export const CartProvider = ({ children }) => {
         return item;
       });
 
-      console.log("From AddtoCart");
-
       setCartItems(updatedCartItems);
     }
-    const updatedProduct = cartItems.find(
-      (item) => item.id === product.id
-    );
-
-    if (updatedProduct.stock > updatedProduct.stock) {
-      console.log("No hay más stock disponible para este producto");
-    }
-    
+    const updatedProduct = cartItems.find((item) => item.id === product.id);
+    console.log(updatedProduct);
   };
 
   const removeFromCart = (id) => {
@@ -68,11 +60,37 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  // const handleCheckout = async (product) => {
+  //   // Validar y procesar la compra
+  //   // ...
+
+  //   // Actualizar el stock del producto
+  //   const productId = product.id;
+  //   const newStock = product.stock - 1;
+
+  //   try {
+  //     const response = await axios.put(
+  //       "http://localhost:4000/product/" + productId,
+  //       {
+  //         stock: newStock,
+  //       }
+  //     );
+  //     console.log(product);
+  //     console.log(response.data.message);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+
+  //   // Informar al usuario que la compra se ha completado con éxito
+  //   // ...
+  // };
+
   const contextValue = {
     cartItems,
     addToCart,
     removeFromCart,
     updateCartItem,
+    // handleCheckout,
   };
 
   return (

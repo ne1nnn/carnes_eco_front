@@ -27,7 +27,7 @@ export default function ProductList() {
             xs={6}
             sm={6}
             md={3}
-            key={product.id}
+            key={product._id}
             style={{ marginTop: "1.5%" }}
           >
             <RecipeReviewCard

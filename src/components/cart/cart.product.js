@@ -9,7 +9,9 @@ function Cart() {
   const handleDelete = (id) => {
     removeFromCart(id);
   };
-
+  // const handleBuy = (product) => {
+  //   handleCheckout(product);
+  // };
   const total = cartItems.reduce(
     (acc, item) => acc + item.price * item.stock,
     0
@@ -24,19 +26,19 @@ function Cart() {
       <table>
         <thead>
           <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
+            <th className="no-margen">Producto</th>
+            <th className="no-margen">Precio</th>
+            <th className="no-margen">Cant.</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {cartItems.map((producto, index) => (
             <tr key={index}>
-              <td>{producto.title}</td>
-              <td>${producto.price}</td>
-              <td>{producto.stock}</td>
-              <td>
+              <td className="no-margen">{producto.title}</td>
+              <td className="no-margen">${producto.price}</td>
+              <td className="no-margen">{producto.stock}</td>
+              <td className="no-margen">
                 <button onClick={() => handleDelete(producto.id)}>
                   Eliminar
                 </button>
